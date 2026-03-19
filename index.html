@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wendell D. Velarde | IT Professional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg:        #f5f5f5;
+      --container: #ffffff;
+      --text:      #2d3748;
+      --text-light:#718096;
+      --accent:    #64748b;
+      --accent-dark:#475569;
+      --border:    #e2e8f0;
+      --shadow:    rgba(0,0,0,0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg:        #0f172a;
+      --container: #1e293b;
+      --text:      #e2e8f0;
+      --text-light:#94a3b8;
+      --accent:    #94a3b8;
+      --accent-dark:#cbd5e1;
+      --border:    #334155;
+      --shadow:    rgba(0,0,0,0.5);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--container);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--accent), var(--accent-dark));
+      color: white;
+      padding: 90px 40px 70px;
+      text-align: center;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .profile-pic {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 6px solid rgba(255,255,255,0.25);
+      object-fit: cover;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: -0.5px; }
+    .tagline { font-size: 1.25rem; opacity: 0.92; max-width: 580px; margin: 0 auto; }
+
+    .top-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .btn {
+      background: rgba(255,255,255,0.25);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover { background: rgba(255,255,255,0.4); transform: translateY(-1px); }
+    .btn i { font-size: 1.1rem; }
+
+    [data-theme="dark"] .btn { background: rgba(30,41,59,0.5); }
+    [data-theme="dark"] .btn:hover { background: rgba(30,41,59,0.7); }
+
+    .content {
+      padding: 50px 40px 60px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 50px;
+    }
+
+    aside, section { background: transparent; }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    .contact-item { margin-bottom: 18px; font-size: 1.05rem; }
+    .contact-item i { color: var(--accent); margin-right: 12px; width: 22px; text-align: center; }
+
+    .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-tag {
+      background: var(--bg);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+    }
+    .skill-tag:hover { background: var(--accent); color: white; transform: translateY(-1px); }
+
+    .experience-item, .education-item { margin-bottom: 28px; }
+    .job-title { font-weight: 700; margin-bottom: 4px; }
+    .company { color: var(--accent); font-weight: 600; }
+    .date { color: var(--text-light); font-size: 0.95rem; font-style: italic; }
+
+    ul { padding-left: 20px; margin: 10px 0; list-style-type: square; }
+
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      .container {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: 100%;
+        margin: 0;
+      }
+      header {
+        background: #e2e8f0 !important;
+        color: #1e293b !important;
+        padding: 60px 30px 40px !important;
+      }
+      header::before { display: none; }
+      .top-controls, .theme-toggle { display: none !important; }
+      .content {
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+        padding: 40px 30px !important;
+      }
+      h1 { font-size: 2.4rem; color: #1e293b !important; }
+      h2 { color: #475569 !important; }
+      .skill-tag { background: #f1f5f9 !important; border-color: #cbd5e1 !important; }
+      .profile-pic { border-color: #cbd5e1 !important; box-shadow: none !important; }
+      a { color: #475569 !important; text-decoration: underline; }
+      :root { 
+        --text: #1e293b !important;
+        --text-light: #475569 !important;
+        --accent: #475569 !important;
+      }
+    }
+
+    @media (max-width: 880px) {
+      body { padding: 30px 15px; }
+      .container { border-radius: 12px; }
+      .content { grid-template-columns: 1fr; gap: 40px; padding: 40px 30px; }
+      header { padding: 70px 30px 50px; }
+      h1 { font-size: 2.4rem; }
+      .top-controls { top: 16px; right: 16px; flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-controls">
+      <button class="btn" onclick="window.print()">
+        <i class="fas fa-download"></i> Download PDF
+      </button>
+      <button class="btn" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i> Theme
+      </button>
+    </div>
+
+    <header>
+      <img src="Formal Picture V2.png" alt="Wendell D. Velarde" class="profile-pic">
+      <h1>WENDELL D. VELARDE</h1>
+      <p class="tagline">IT Support Specialist  •  Web Developer  •  UI/UX Enthusiast</p>
+    </header>
+
+    <div class="content">
+
+      <aside>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> San Miguel, Bulacan, Philippines, 3011</div>
+        <div class="contact-item"><i class="fas fa-envelope"></i> wendellvelarde.it@gmail.com</div>
+        <div class="contact-item"><i class="fas fa-phone"></i> +63 938 747 5220</div>
+
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <span class="skill-tag">Hardware & Software Troubleshooting</span>
+          <span class="skill-tag">Network Setup & Maintenance</span>
+          <span class="skill-tag">System Admin & User Management</span>
+          <span class="skill-tag">Data Backup & Recovery</span>
+          <span class="skill-tag">Web Development</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Database & SQL</span>
+          <span class="skill-tag">Graphic Design</span>
+        </div>
+
+        <h2>Certifications</h2>
+        <ul>
+          <li>IT Internship – Panrama Technologies</li>
+          <li>Technical Workshop – AMAXPH × Hikvision</li>
+          <li>Understanding Intellectual Property (2024)</li>
+          <li>Momo Cart Website Project Turnover (2025)</li>
+        </ul>
+
+        <h2>References</h2>
+        <p>Available upon request</p>
+      </aside>
+
+      <main>
+        <section>
+          <h2>Professional Summary</h2>
+          <p>To obtain a position where I can apply my skills, gain experience, and continuously develop professionally while contributing to the growth and success of the organization through dedication, hard work, and effective problem-solving.</p>
+        </section>
+
+        <section>
+          <h2>Experience</h2>
+          <div class="experience-item">
+            <div class="job-title">IT Support (Internship)</div>
+            <div><span class="company">Panrama Technologies Enterprises</span> • Feb 2025 – May 2025 • Baliwag, Bulacan</div>
+            <ul>
+              <li>System setups, network installations, troubleshooting, structured cabling</li>
+              <li>Front-end development for momo-cart.com and Pita Roo Shawarma (graphics, data entry, management)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="education-item">
+            <div class="job-title">BS Information Technology</div>
+            <div><span class="company">Bulacan Agricultural State College</span> • 2021 – 2025 • San Ildefonso, Bulacan</div>
+          </div>
+          <div class="education-item">
+            <div class="job-title">SHS – ICT Strand</div>
+            <div><span class="company">San Miguel National High School</span> • 2019 – 2021 • San Miguel, Bulacan</div>
+          </div>
+          <div class="education-item">
+            <div class="job-title">Junior High School</div>
+            <div><span class="company">San Miguel National High School</span> • 2016 – 2019 • San Miguel, Bulacan</div>
+          </div>
+        </section>
+      </main>
+
+    </div>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+</body>
+</html>
