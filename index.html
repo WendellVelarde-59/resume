@@ -7,29 +7,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --bg:        #f5f5f5;
+      --bg: #f5f5f5;
       --container: #ffffff;
-      --text:      #2d3748;
+      --text: #2d3748;
       --text-light:#718096;
-      --accent:    #64748b;
+      --accent: #64748b;
       --accent-dark:#475569;
-      --border:    #e2e8f0;
-      --shadow:    rgba(0,0,0,0.06);
+      --border: #e2e8f0;
+      --shadow: rgba(0,0,0,0.06);
     }
-
     [data-theme="dark"] {
-      --bg:        #0f172a;
+      --bg: #0f172a;
       --container: #1e293b;
-      --text:      #e2e8f0;
+      --text: #e2e8f0;
       --text-light:#94a3b8;
-      --accent:    #94a3b8;
+      --accent: #94a3b8;
       --accent-dark:#cbd5e1;
-      --border:    #334155;
-      --shadow:    rgba(0,0,0,0.5);
+      --border: #334155;
+      --shadow: rgba(0,0,0,0.5);
     }
-
     * { margin:0; padding:0; box-sizing:border-box; }
-
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       line-height: 1.65;
@@ -39,7 +36,6 @@
       padding: 40px 20px 60px;
       transition: background 0.4s, color 0.4s;
     }
-
     .container {
       max-width: 980px;
       margin: 0 auto;
@@ -50,7 +46,6 @@
       border: 1px solid var(--border);
       position: relative;
     }
-
     header {
       background: linear-gradient(to right, var(--accent), var(--accent-dark));
       color: white;
@@ -58,7 +53,6 @@
       text-align: center;
       position: relative;
     }
-
     header::before {
       content: '';
       position: absolute;
@@ -66,7 +60,6 @@
       background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 60%);
       pointer-events: none;
     }
-
     .profile-pic {
       width: 170px;
       height: 170px;
@@ -76,10 +69,8 @@
       margin-bottom: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
-
     h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: -0.5px; }
     .tagline { font-size: 1.25rem; opacity: 0.92; max-width: 580px; margin: 0 auto; }
-
     .top-controls {
       position: absolute;
       top: 20px;
@@ -88,7 +79,6 @@
       gap: 12px;
       z-index: 10;
     }
-
     .btn {
       background: rgba(255,255,255,0.25);
       color: white;
@@ -104,22 +94,17 @@
       transition: all 0.2s;
       backdrop-filter: blur(4px);
     }
-
     .btn:hover { background: rgba(255,255,255,0.4); transform: translateY(-1px); }
     .btn i { font-size: 1.1rem; }
-
     [data-theme="dark"] .btn { background: rgba(30,41,59,0.5); }
     [data-theme="dark"] .btn:hover { background: rgba(30,41,59,0.7); }
-
     .content {
       padding: 50px 40px 60px;
       display: grid;
       grid-template-columns: 300px 1fr;
       gap: 50px;
     }
-
     aside, section { background: transparent; }
-
     h2 {
       color: var(--accent);
       font-size: 1.75rem;
@@ -127,7 +112,6 @@
       position: relative;
       padding-bottom: 10px;
     }
-
     h2::after {
       content: '';
       position: absolute;
@@ -137,10 +121,8 @@
       background: var(--accent);
       border-radius: 1px;
     }
-
     .contact-item { margin-bottom: 18px; font-size: 1.05rem; }
     .contact-item i { color: var(--accent); margin-right: 12px; width: 22px; text-align: center; }
-
     .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill-tag {
       background: var(--bg);
@@ -151,14 +133,27 @@
       transition: all 0.25s;
     }
     .skill-tag:hover { background: var(--accent); color: white; transform: translateY(-1px); }
-
     .experience-item, .education-item { margin-bottom: 28px; }
     .job-title { font-weight: 700; margin-bottom: 4px; }
     .company { color: var(--accent); font-weight: 600; }
     .date { color: var(--text-light); font-size: 0.95rem; font-style: italic; }
-
     ul { padding-left: 20px; margin: 10px 0; list-style-type: square; }
-
+    .reference-item {
+      margin-bottom: 20px;
+      font-size: 1.02rem;
+    }
+    .reference-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .reference-title {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .reference-contact {
+      color: var(--text-light);
+      font-size: 0.97rem;
+    }
     @media print {
       body {
         background: white !important;
@@ -188,13 +183,12 @@
       .skill-tag { background: #f1f5f9 !important; border-color: #cbd5e1 !important; }
       .profile-pic { border-color: #cbd5e1 !important; box-shadow: none !important; }
       a { color: #475569 !important; text-decoration: underline; }
-      :root { 
+      :root {
         --text: #1e293b !important;
         --text-light: #475569 !important;
         --accent: #475569 !important;
       }
     }
-
     @media (max-width: 880px) {
       body { padding: 30px 15px; }
       .container { border-radius: 12px; }
@@ -206,9 +200,7 @@
   </style>
 </head>
 <body>
-
   <div class="container">
-
     <div class="top-controls">
       <button class="btn" onclick="window.print()">
         <i class="fas fa-download"></i> Download PDF
@@ -217,15 +209,12 @@
         <i class="fas fa-moon"></i> Theme
       </button>
     </div>
-
     <header>
       <img src="photo.png" alt="Wendell D. Velarde" class="profile-pic">
       <h1>WENDELL D. VELARDE</h1>
-      <p class="tagline">IT Support Specialist  •  Web Developer  •  UI/UX Enthusiast</p>
+      <p class="tagline">IT Support Specialist • Web Developer • UI/UX Enthusiast</p>
     </header>
-
     <div class="content">
-
       <aside>
         <div class="contact-item"><i class="fas fa-map-marker-alt"></i> San Miguel, Bulacan, Philippines, 3011</div>
         <div class="contact-item"><i class="fas fa-envelope"></i> wendellvelarde.it@gmail.com</div>
@@ -251,8 +240,28 @@
           <li>Momo Cart Website Project Turnover (2025)</li>
         </ul>
 
-        <h2>References</h2>
-        <p>Available upon request</p>
+        <h2>Character References</h2>
+        <div class="reference-item">
+          <div class="reference-name">Mr. Arnel Adriano</div>
+          <div class="reference-title">IT Instructor</div>
+          <div class="reference-contact">Bulacan Agricultural State College</div>
+          <div class="reference-contact">0919 743 7964</div>
+          <div class="reference-contact">arnelsadriano0112@gmail.com</div>
+        </div>
+        <div class="reference-item">
+          <div class="reference-name">Ms. Russel Amira H. Blacania</div>
+          <div class="reference-title">IT Instructor</div>
+          <div class="reference-contact">Bulacan Agricultural State College</div>
+          <div class="reference-contact">0994 932 7516</div>
+          <div class="reference-contact">russel.amira09@gmail.com</div>
+        </div>
+        <div class="reference-item">
+          <div class="reference-name">Florentino Sillarez Casuco Jr.</div>
+          <div class="reference-title">IT Instructor</div>
+          <div class="reference-contact">Bulacan Agricultural State College</div>
+          <div class="reference-contact">0936 177 3281</div>
+          <div class="reference-contact">fscjr1021@gmail.com</div>
+        </div>
       </aside>
 
       <main>
@@ -289,9 +298,7 @@
           </div>
         </section>
       </main>
-
     </div>
-
   </div>
 
   <script>
@@ -302,7 +309,6 @@
       html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     }
-
     (function() {
       const saved = localStorage.getItem('theme');
       if (saved) {
@@ -312,6 +318,5 @@
       }
     })();
   </script>
-
 </body>
 </html>
